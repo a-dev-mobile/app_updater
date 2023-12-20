@@ -6,7 +6,7 @@ void main() {
     late AppUpdateClient client;
 
     setUp(() {
-      client = AppUpdateClient(baseUrl: 'https://wayofdt.com');
+      client = AppUpdateClient(url: 'https://wayofdt.com/app-update-api/v1/check');
     });
 
     test('should get a valid response from the server', () async {
@@ -19,7 +19,7 @@ void main() {
 
       final response = await client.checkForUpdates(request);
 
-      response.when(
+      response.whenOrNull(
           success: (v) {},
           error: (v) {
             fail('Expected success but got error');
@@ -35,7 +35,7 @@ void main() {
 
       final response = await client.checkForUpdates(request);
 
-      response.when(
+      response.whenOrNull(
           success: (v) {
             fail('Expected error but got success');
           },

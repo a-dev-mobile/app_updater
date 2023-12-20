@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 ApiAppUpdateCheckRes _$ApiAppUpdateCheckResFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
+    case 'init':
+      return _Init.fromJson(json);
     case 'success':
       return _Success.fromJson(json);
     case 'error':
@@ -34,6 +36,7 @@ ApiAppUpdateCheckRes _$ApiAppUpdateCheckResFromJson(Map<String, dynamic> json) {
 mixin _$ApiAppUpdateCheckRes {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(ApiAppUpdateCheckResSuccess successResponse)
         success,
     required TResult Function(ApiAppUpdateCheckResError errorResponse) error,
@@ -41,12 +44,14 @@ mixin _$ApiAppUpdateCheckRes {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(ApiAppUpdateCheckResSuccess successResponse)? success,
     TResult? Function(ApiAppUpdateCheckResError errorResponse)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(ApiAppUpdateCheckResSuccess successResponse)? success,
     TResult Function(ApiAppUpdateCheckResError errorResponse)? error,
     required TResult orElse(),
@@ -54,18 +59,21 @@ mixin _$ApiAppUpdateCheckRes {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -91,6 +99,130 @@ class _$ApiAppUpdateCheckResCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$InitImplCopyWith<$Res> {
+  factory _$$InitImplCopyWith(
+          _$InitImpl value, $Res Function(_$InitImpl) then) =
+      __$$InitImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitImplCopyWithImpl<$Res>
+    extends _$ApiAppUpdateCheckResCopyWithImpl<$Res, _$InitImpl>
+    implements _$$InitImplCopyWith<$Res> {
+  __$$InitImplCopyWithImpl(_$InitImpl _value, $Res Function(_$InitImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$InitImpl implements _Init {
+  const _$InitImpl({final String? $type}) : $type = $type ?? 'init';
+
+  factory _$InitImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InitImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ApiAppUpdateCheckRes.init()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitImpl);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(ApiAppUpdateCheckResSuccess successResponse)
+        success,
+    required TResult Function(ApiAppUpdateCheckResError errorResponse) error,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(ApiAppUpdateCheckResSuccess successResponse)? success,
+    TResult? Function(ApiAppUpdateCheckResError errorResponse)? error,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(ApiAppUpdateCheckResSuccess successResponse)? success,
+    TResult Function(ApiAppUpdateCheckResError errorResponse)? error,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$InitImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Init implements ApiAppUpdateCheckRes {
+  const factory _Init() = _$InitImpl;
+
+  factory _Init.fromJson(Map<String, dynamic> json) = _$InitImpl.fromJson;
 }
 
 /// @nodoc
@@ -156,7 +288,7 @@ class _$SuccessImpl implements _Success {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
@@ -177,6 +309,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(ApiAppUpdateCheckResSuccess successResponse)
         success,
     required TResult Function(ApiAppUpdateCheckResError errorResponse) error,
@@ -187,6 +320,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(ApiAppUpdateCheckResSuccess successResponse)? success,
     TResult? Function(ApiAppUpdateCheckResError errorResponse)? error,
   }) {
@@ -196,6 +330,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(ApiAppUpdateCheckResSuccess successResponse)? success,
     TResult Function(ApiAppUpdateCheckResError errorResponse)? error,
     required TResult orElse(),
@@ -209,6 +344,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
@@ -218,6 +354,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) {
@@ -227,6 +364,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -320,7 +458,7 @@ class _$ErrorImpl implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
@@ -341,6 +479,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(ApiAppUpdateCheckResSuccess successResponse)
         success,
     required TResult Function(ApiAppUpdateCheckResError errorResponse) error,
@@ -351,6 +490,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(ApiAppUpdateCheckResSuccess successResponse)? success,
     TResult? Function(ApiAppUpdateCheckResError errorResponse)? error,
   }) {
@@ -360,6 +500,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(ApiAppUpdateCheckResSuccess successResponse)? success,
     TResult Function(ApiAppUpdateCheckResError errorResponse)? error,
     required TResult orElse(),
@@ -373,6 +514,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
@@ -382,6 +524,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) {
@@ -391,6 +534,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -589,7 +733,7 @@ class _$ApiAppUpdateCheckResSuccessImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiAppUpdateCheckResSuccessImpl &&
@@ -777,7 +921,7 @@ class _$LatestVersionImpl implements _LatestVersion {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LatestVersionImpl &&
@@ -930,7 +1074,7 @@ class _$ApiAppUpdateCheckResErrorImpl implements _ApiAppUpdateCheckResError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiAppUpdateCheckResErrorImpl &&

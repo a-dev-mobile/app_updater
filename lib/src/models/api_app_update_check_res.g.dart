@@ -6,6 +6,15 @@ part of 'api_app_update_check_res.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$InitImpl _$$InitImplFromJson(Map<String, dynamic> json) => _$InitImpl(
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$InitImplToJson(_$InitImpl instance) =>
+    <String, dynamic>{
+      'runtimeType': instance.$type,
+    };
+
 _$SuccessImpl _$$SuccessImplFromJson(Map<String, dynamic> json) =>
     _$SuccessImpl(
       ApiAppUpdateCheckResSuccess.fromJson(

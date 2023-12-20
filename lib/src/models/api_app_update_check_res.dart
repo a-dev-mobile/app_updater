@@ -1,14 +1,15 @@
+// ignore_for_file: invalid_annotation_target
 
 import 'package:app_updater/src/enum/enum_app_update_type.dart';
 import 'package:app_updater/src/utils/helper_for_json.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 
 part 'api_app_update_check_res.freezed.dart';
 part 'api_app_update_check_res.g.dart';
 
 @freezed
 sealed class ApiAppUpdateCheckRes with _$ApiAppUpdateCheckRes {
+  const factory ApiAppUpdateCheckRes.init() = _Init;
   const factory ApiAppUpdateCheckRes.success(
     ApiAppUpdateCheckResSuccess successResponse,
   ) = _Success;
@@ -47,8 +48,8 @@ class ApiAppUpdateCheckResSuccess with _$ApiAppUpdateCheckResSuccess {
 class LatestVersion with _$LatestVersion {
   const factory LatestVersion({
     required int versionCode,
-   required String versionName,
-   required String url,
+    required String versionName,
+    required String url,
   }) = _LatestVersion;
 
   factory LatestVersion.fromJson(Map<String, Object?> json) =>

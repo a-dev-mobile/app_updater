@@ -10,4 +10,9 @@
 /// your application or external services.
 library app_updater;
 
-export 'src/src.dart';
+
+export 'src/client/client.dart';
+export 'src/enum/enum_app_update_type.dart';
+export 'src/models/api_app_update_check_req.dart';
+export 'src/models/api_app_update_check_res.dart';
+export 'src/utils/helper_for_json.dart';

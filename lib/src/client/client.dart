@@ -1,43 +1,54 @@
 import 'dart:convert';
+import 'package:dio/dio.dart';
 import 'package:app_updater/src/models/api_app_update_check_req.dart';
 import 'package:app_updater/src/models/api_app_update_check_res.dart';
-import 'package:http/http.dart' as http;
 
 class AppUpdateClient {
-  final String baseUrl;
-  final http.Client httpClient;
+  final String url;
+  final Dio dioClient;
 
   AppUpdateClient({
-    required this.baseUrl,
-    http.Client? client,
-  }) : httpClient = client ?? http.Client();
+    required this.url,
+    Dio? dio,
+  }) : dioClient = dio ?? Dio();
 
   Future<ApiAppUpdateCheckRes> checkForUpdates(
       ApiAppUpdateCheckReq request) async {
-    final url = Uri.parse('$baseUrl/app-update-api/v1/check');
-
-
+    
 
     try {
-      final response = await httpClient.post(
-        url,
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode(request.toJson()),
-      );
+      final response = await dioClient
+          .post(
+            url,
+            options: Options(headers: {'Content-Type': 'application/json'}),
+            data: jsonEncode(request.toJson()),
+          )
+          .timeout(const Duration(seconds: 30)); // Setting a timeout
 
-      if (response.statusCode == 200) {
+      // Explicitly check if the status code is null and provide a default value if it is
+      final statusCode = response.statusCode ?? 0;
+
+      if (statusCode >= 200 && statusCode < 300) {
         return ApiAppUpdateCheckRes.success(
-          ApiAppUpdateCheckResSuccess.fromJson(jsonDecode(response.body)),
+          ApiAppUpdateCheckResSuccess.fromJson(response.data),
         );
       } else {
-        return ApiAppUpdateCheckRes.error(
-          ApiAppUpdateCheckResError.fromJson(jsonDecode(response.body)),
-        );
+        // Handle different status codes if needed
+        return _handleErrorResponse(response);
       }
-    } on Exception catch (e) {
+    } on DioException catch (e) {
+      // Log the error or handle it appropriately
       return ApiAppUpdateCheckRes.error(
-        ApiAppUpdateCheckResError(message: e.toString()),
+        ApiAppUpdateCheckResError(
+            message: e.message ?? "Unknown error occurred"),
       );
     }
+  }
+
+  ApiAppUpdateCheckRes _handleErrorResponse(Response response) {
+    // This function can be expanded to handle different types of errors
+    return ApiAppUpdateCheckRes.error(
+      ApiAppUpdateCheckResError.fromJson(response.data),
+    );
   }
 }
