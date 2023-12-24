@@ -64,6 +64,7 @@ _$LatestVersionImpl _$$LatestVersionImplFromJson(Map<String, dynamic> json) =>
       versionCode: json['versionCode'] as int,
       versionName: json['versionName'] as String,
       url: json['url'] as String,
+      checksum: json['checksum'] as String,
     );
 
 Map<String, dynamic> _$$LatestVersionImplToJson(_$LatestVersionImpl instance) =>
@@ -71,6 +72,7 @@ Map<String, dynamic> _$$LatestVersionImplToJson(_$LatestVersionImpl instance) =>
       'versionCode': instance.versionCode,
       'versionName': instance.versionName,
       'url': instance.url,
+      'checksum': instance.checksum,
     };
 
 _$ApiAppUpdateCheckResErrorImpl _$$ApiAppUpdateCheckResErrorImplFromJson(

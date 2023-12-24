@@ -804,6 +804,7 @@ mixin _$LatestVersion {
   int get versionCode => throw _privateConstructorUsedError;
   String get versionName => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
+  String get checksum => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -817,7 +818,7 @@ abstract class $LatestVersionCopyWith<$Res> {
           LatestVersion value, $Res Function(LatestVersion) then) =
       _$LatestVersionCopyWithImpl<$Res, LatestVersion>;
   @useResult
-  $Res call({int versionCode, String versionName, String url});
+  $Res call({int versionCode, String versionName, String url, String checksum});
 }
 
 /// @nodoc
@@ -836,6 +837,7 @@ class _$LatestVersionCopyWithImpl<$Res, $Val extends LatestVersion>
     Object? versionCode = null,
     Object? versionName = null,
     Object? url = null,
+    Object? checksum = null,
   }) {
     return _then(_value.copyWith(
       versionCode: null == versionCode
@@ -850,6 +852,10 @@ class _$LatestVersionCopyWithImpl<$Res, $Val extends LatestVersion>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      checksum: null == checksum
+          ? _value.checksum
+          : checksum // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -862,7 +868,7 @@ abstract class _$$LatestVersionImplCopyWith<$Res>
       __$$LatestVersionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int versionCode, String versionName, String url});
+  $Res call({int versionCode, String versionName, String url, String checksum});
 }
 
 /// @nodoc
@@ -879,6 +885,7 @@ class __$$LatestVersionImplCopyWithImpl<$Res>
     Object? versionCode = null,
     Object? versionName = null,
     Object? url = null,
+    Object? checksum = null,
   }) {
     return _then(_$LatestVersionImpl(
       versionCode: null == versionCode
@@ -893,6 +900,10 @@ class __$$LatestVersionImplCopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      checksum: null == checksum
+          ? _value.checksum
+          : checksum // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -903,7 +914,8 @@ class _$LatestVersionImpl implements _LatestVersion {
   const _$LatestVersionImpl(
       {required this.versionCode,
       required this.versionName,
-      required this.url});
+      required this.url,
+      required this.checksum});
 
   factory _$LatestVersionImpl.fromJson(Map<String, dynamic> json) =>
       _$$LatestVersionImplFromJson(json);
@@ -914,10 +926,12 @@ class _$LatestVersionImpl implements _LatestVersion {
   final String versionName;
   @override
   final String url;
+  @override
+  final String checksum;
 
   @override
   String toString() {
-    return 'LatestVersion(versionCode: $versionCode, versionName: $versionName, url: $url)';
+    return 'LatestVersion(versionCode: $versionCode, versionName: $versionName, url: $url, checksum: $checksum)';
   }
 
   @override
@@ -929,12 +943,15 @@ class _$LatestVersionImpl implements _LatestVersion {
                 other.versionCode == versionCode) &&
             (identical(other.versionName, versionName) ||
                 other.versionName == versionName) &&
-            (identical(other.url, url) || other.url == url));
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.checksum, checksum) ||
+                other.checksum == checksum));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, versionCode, versionName, url);
+  int get hashCode =>
+      Object.hash(runtimeType, versionCode, versionName, url, checksum);
 
   @JsonKey(ignore: true)
   @override
@@ -954,7 +971,8 @@ abstract class _LatestVersion implements LatestVersion {
   const factory _LatestVersion(
       {required final int versionCode,
       required final String versionName,
-      required final String url}) = _$LatestVersionImpl;
+      required final String url,
+      required final String checksum}) = _$LatestVersionImpl;
 
   factory _LatestVersion.fromJson(Map<String, dynamic> json) =
       _$LatestVersionImpl.fromJson;
@@ -965,6 +983,8 @@ abstract class _LatestVersion implements LatestVersion {
   String get versionName;
   @override
   String get url;
+  @override
+  String get checksum;
   @override
   @JsonKey(ignore: true)
   _$$LatestVersionImplCopyWith<_$LatestVersionImpl> get copyWith =>

@@ -22,6 +22,8 @@ ApiAppUpdateCheckReq _$ApiAppUpdateCheckReqFromJson(Map<String, dynamic> json) {
 mixin _$ApiAppUpdateCheckReq {
   int get versionCode => throw _privateConstructorUsedError;
   String get installerPackageName => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false, toJson: _debugModeToJson)
+  bool? get debugMode => throw _privateConstructorUsedError;
   String get versionName => throw _privateConstructorUsedError;
   String get packageName => throw _privateConstructorUsedError;
 
@@ -40,6 +42,7 @@ abstract class $ApiAppUpdateCheckReqCopyWith<$Res> {
   $Res call(
       {int versionCode,
       String installerPackageName,
+      @JsonKey(includeIfNull: false, toJson: _debugModeToJson) bool? debugMode,
       String versionName,
       String packageName});
 }
@@ -60,6 +63,7 @@ class _$ApiAppUpdateCheckReqCopyWithImpl<$Res,
   $Res call({
     Object? versionCode = null,
     Object? installerPackageName = null,
+    Object? debugMode = freezed,
     Object? versionName = null,
     Object? packageName = null,
   }) {
@@ -72,6 +76,10 @@ class _$ApiAppUpdateCheckReqCopyWithImpl<$Res,
           ? _value.installerPackageName
           : installerPackageName // ignore: cast_nullable_to_non_nullable
               as String,
+      debugMode: freezed == debugMode
+          ? _value.debugMode
+          : debugMode // ignore: cast_nullable_to_non_nullable
+              as bool?,
       versionName: null == versionName
           ? _value.versionName
           : versionName // ignore: cast_nullable_to_non_nullable
@@ -95,6 +103,7 @@ abstract class _$$ApiAppUpdateCheckReqImplCopyWith<$Res>
   $Res call(
       {int versionCode,
       String installerPackageName,
+      @JsonKey(includeIfNull: false, toJson: _debugModeToJson) bool? debugMode,
       String versionName,
       String packageName});
 }
@@ -112,6 +121,7 @@ class __$$ApiAppUpdateCheckReqImplCopyWithImpl<$Res>
   $Res call({
     Object? versionCode = null,
     Object? installerPackageName = null,
+    Object? debugMode = freezed,
     Object? versionName = null,
     Object? packageName = null,
   }) {
@@ -124,6 +134,10 @@ class __$$ApiAppUpdateCheckReqImplCopyWithImpl<$Res>
           ? _value.installerPackageName
           : installerPackageName // ignore: cast_nullable_to_non_nullable
               as String,
+      debugMode: freezed == debugMode
+          ? _value.debugMode
+          : debugMode // ignore: cast_nullable_to_non_nullable
+              as bool?,
       versionName: null == versionName
           ? _value.versionName
           : versionName // ignore: cast_nullable_to_non_nullable
@@ -142,6 +156,7 @@ class _$ApiAppUpdateCheckReqImpl implements _ApiAppUpdateCheckReq {
   const _$ApiAppUpdateCheckReqImpl(
       {required this.versionCode,
       required this.installerPackageName,
+      @JsonKey(includeIfNull: false, toJson: _debugModeToJson) this.debugMode,
       required this.versionName,
       required this.packageName});
 
@@ -153,13 +168,16 @@ class _$ApiAppUpdateCheckReqImpl implements _ApiAppUpdateCheckReq {
   @override
   final String installerPackageName;
   @override
+  @JsonKey(includeIfNull: false, toJson: _debugModeToJson)
+  final bool? debugMode;
+  @override
   final String versionName;
   @override
   final String packageName;
 
   @override
   String toString() {
-    return 'ApiAppUpdateCheckReq(versionCode: $versionCode, installerPackageName: $installerPackageName, versionName: $versionName, packageName: $packageName)';
+    return 'ApiAppUpdateCheckReq(versionCode: $versionCode, installerPackageName: $installerPackageName, debugMode: $debugMode, versionName: $versionName, packageName: $packageName)';
   }
 
   @override
@@ -171,6 +189,8 @@ class _$ApiAppUpdateCheckReqImpl implements _ApiAppUpdateCheckReq {
                 other.versionCode == versionCode) &&
             (identical(other.installerPackageName, installerPackageName) ||
                 other.installerPackageName == installerPackageName) &&
+            (identical(other.debugMode, debugMode) ||
+                other.debugMode == debugMode) &&
             (identical(other.versionName, versionName) ||
                 other.versionName == versionName) &&
             (identical(other.packageName, packageName) ||
@@ -179,8 +199,8 @@ class _$ApiAppUpdateCheckReqImpl implements _ApiAppUpdateCheckReq {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, versionCode, installerPackageName, versionName, packageName);
+  int get hashCode => Object.hash(runtimeType, versionCode,
+      installerPackageName, debugMode, versionName, packageName);
 
   @JsonKey(ignore: true)
   @override
@@ -202,6 +222,8 @@ abstract class _ApiAppUpdateCheckReq implements ApiAppUpdateCheckReq {
   const factory _ApiAppUpdateCheckReq(
       {required final int versionCode,
       required final String installerPackageName,
+      @JsonKey(includeIfNull: false, toJson: _debugModeToJson)
+      final bool? debugMode,
       required final String versionName,
       required final String packageName}) = _$ApiAppUpdateCheckReqImpl;
 
@@ -212,6 +234,9 @@ abstract class _ApiAppUpdateCheckReq implements ApiAppUpdateCheckReq {
   int get versionCode;
   @override
   String get installerPackageName;
+  @override
+  @JsonKey(includeIfNull: false, toJson: _debugModeToJson)
+  bool? get debugMode;
   @override
   String get versionName;
   @override

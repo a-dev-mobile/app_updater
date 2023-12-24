@@ -50,6 +50,7 @@ class LatestVersion with _$LatestVersion {
     required int versionCode,
     required String versionName,
     required String url,
+    required String checksum,
   }) = _LatestVersion;
 
   factory LatestVersion.fromJson(Map<String, Object?> json) =>

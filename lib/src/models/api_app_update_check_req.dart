@@ -10,6 +10,7 @@ class ApiAppUpdateCheckReq with _$ApiAppUpdateCheckReq {
   const factory ApiAppUpdateCheckReq({
     required final int versionCode,
     required final String installerPackageName,
+    @JsonKey(includeIfNull: false, toJson: _debugModeToJson) bool? debugMode,
     required final String versionName,
     required final String packageName,
   }) = _ApiAppUpdateCheckReq;
@@ -17,3 +18,6 @@ class ApiAppUpdateCheckReq with _$ApiAppUpdateCheckReq {
   factory ApiAppUpdateCheckReq.fromJson(Map<String, Object?> json) =>
       _$ApiAppUpdateCheckReqFromJson(json);
 }
+
+// Custom toJson function for debugMode
+bool? _debugModeToJson(bool? debugMode) => debugMode == true ? true : null;
